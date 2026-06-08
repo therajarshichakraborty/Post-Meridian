@@ -10,16 +10,16 @@ interface LogoProps {
 }
 
 const Logo = ({
-  name = "Lemon.ai",
+  name = "Post Meridian",
   className,
   hideName = false,
 }: LogoProps) => {
   return (
     <div className={cn("flex items-center gap-2", className)}>
-      <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+      <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-sidebar-foreground text-sidebar">
         <Leaf className="h-4 w-4" />
       </div>
-      {!hideName && <span className="text-base font-bold">{name}</span>}
+      {!hideName && <span className="text-base font-bold text-sidebar-foreground tracking-tight">{name}</span>}
     </div>
   );
 };
