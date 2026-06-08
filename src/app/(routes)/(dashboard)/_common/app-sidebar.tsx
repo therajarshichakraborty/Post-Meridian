@@ -71,7 +71,9 @@ export function AppSideBar() {
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-widest text-sidebar-foreground/40 px-2">Application</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.2em] text-sidebar-foreground/35 px-2 select-none">
+            Application
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {mainNavItems.map((item) => {
@@ -82,12 +84,23 @@ export function AppSideBar() {
                       asChild
                       isActive={isActive}
                       tooltip={item.title}
+                      className={cn(
+                        "relative transition-all duration-200",
+                        isActive
+                          ? "bg-sidebar-accent/50 text-sidebar-foreground font-semibold"
+                          : "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent/30"
+                      )}
                     >
-                      <Link href={item.url}>
-                        <span className="flex items-center justify-center size-4 shrink-0">
+                      <Link href={item.url} className="flex items-center w-full">
+                        {isActive && (
+                          <span className="absolute left-[4px] w-[2.5px] h-3 rounded-full bg-sidebar-foreground" />
+                        )}
+                        <span className="flex items-center justify-center size-4 shrink-0 transition-transform duration-200 group-hover/menu-button:translate-x-[1px]">
                           <item.icon className="size-4" />
                         </span>
-                        <span className="truncate font-medium tracking-tight">{item.title}</span>
+                        <span className="truncate font-medium tracking-tight transition-transform duration-200 group-hover/menu-button:translate-x-[1px] ml-0.5">
+                          {item.title}
+                        </span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -100,7 +113,9 @@ export function AppSideBar() {
         <SidebarSeparator />
 
         <SidebarGroup>
-          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-widest text-sidebar-foreground/40 px-2">Account</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.2em] text-sidebar-foreground/35 px-2 select-none">
+            Account
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {secondaryNavItems.map((item) => {
@@ -111,12 +126,23 @@ export function AppSideBar() {
                       asChild
                       isActive={isActive}
                       tooltip={item.title}
+                      className={cn(
+                        "relative transition-all duration-200",
+                        isActive
+                          ? "bg-sidebar-accent/50 text-sidebar-foreground font-semibold"
+                          : "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent/30"
+                      )}
                     >
-                      <Link href={item.url}>
-                        <span className="flex items-center justify-center size-4 shrink-0">
+                      <Link href={item.url} className="flex items-center w-full">
+                        {isActive && (
+                          <span className="absolute left-[4px] w-[2.5px] h-3 rounded-full bg-sidebar-foreground" />
+                        )}
+                        <span className="flex items-center justify-center size-4 shrink-0 transition-transform duration-200 group-hover/menu-button:translate-x-[1px]">
                           <item.icon className="size-4" />
                         </span>
-                        <span className="truncate font-medium tracking-tight">{item.title}</span>
+                        <span className="truncate font-medium tracking-tight transition-transform duration-200 group-hover/menu-button:translate-x-[1px] ml-0.5">
+                          {item.title}
+                        </span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -128,6 +154,7 @@ export function AppSideBar() {
       </SidebarContent>
 
       <SidebarSeparator />
+
       <SidebarFooter className="pb-3">
         <SidebarMenu>
           <SidebarMenuItem>
@@ -136,18 +163,20 @@ export function AppSideBar() {
                 <SidebarMenuButton
                   size="lg"
                   tooltip="Account options"
-                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                  className="relative transition-all duration-200 hover:bg-sidebar-accent/40 active:bg-sidebar-accent/60"
                 >
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sidebar-foreground text-sidebar text-sm font-bold">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-950 text-sidebar-foreground text-xs font-semibold shadow-[0_1px_2px_rgba(0,0,0,0.03)] dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)]">
                     J
                   </div>
                   <div className="flex flex-col items-start leading-tight group-data-[collapsible=icon]:hidden">
-                    <span className="text-sm font-semibold truncate text-sidebar-foreground">John Doe</span>
-                    <span className="text-xs text-sidebar-foreground/50 truncate">
+                    <span className="text-[13px] font-semibold tracking-tight text-sidebar-foreground">
+                      John Doe
+                    </span>
+                    <span className="text-[11px] text-muted-foreground/80 tracking-normal truncate">
                       john@example.com
                     </span>
                   </div>
-                  <ChevronsUpDown className="ml-auto size-4 group-data-[collapsible=icon]:hidden text-sidebar-foreground/60" />
+                  <ChevronsUpDown className="ml-auto size-3.5 text-sidebar-foreground/45 group-data-[collapsible=icon]:hidden" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
 
