@@ -138,7 +138,10 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1,
+      "ss01" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -157,7 +160,8 @@
     font-weight: 600;
     line-height: 1.2;
   }
-  h3, h4 {
+  h3,
+  h4 {
     letter-spacing: -0.018em;
     font-weight: 500;
   }
@@ -167,9 +171,10 @@
   }
 }
 
-::view-transition-old(root), ::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 [data-slot="sidebar-container"] {

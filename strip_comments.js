@@ -1,15 +1,16 @@
-const fs = require('fs');
+import {promises as fs} from "node:fs"
 
-function stripComments(filepath) {
-  let content = fs.readFileSync(filepath, 'utf8');
+async function stripComments(filepath) {
+  let content = await fs.readFile(filepath, "utf8");
 
-  content = content.replace(/\{\s*\/\*.*?\*\/\s*\}/gs, '');
+  content = content.replace(/\{\s*\/\*.*?\*\/\s*\}/gs, "");
 
-  const pattern = /("(?:\\.|[^"\\])*"|'(?:\\.|[^\'\\])*'|`(?:\\.|[^`\\])*`|\/\*.*?\*\/|\/\/[^\r\n]*)/gs;
-  
+  const pattern =
+    /("(?:\\.|[^"\\])*"|'(?:\\.|[^\'\\])*'|`(?:\\.|[^`\\])*`|\/\*.*?\*\/|\/\/[^\r\n]*)/gs;
+
   content = content.replace(pattern, (match) => {
-    if (match.startsWith('/') || match.startsWith('//')) {
-      return '';
+    if (match.startsWith("/") || match.startsWith("//")) {
+      return "";
     }
     return match;
   });
@@ -20,7 +21,7 @@ function stripComments(filepath) {
   for (const line of lines) {
     if (!line.trim()) {
       if (!prevEmpty) {
-        cleanedLines.push('');
+        cleanedLines.push("");
         prevEmpty = true;
       }
     } else {
@@ -29,8 +30,8 @@ function stripComments(filepath) {
     }
   }
 
-  content = cleanedLines.join('\n') + '\n';
-  fs.writeFileSync(filepath, content, 'utf8');
+  content = cleanedLines.join("\n") + "\n";
+  fs.writeFileSync(filepath, content, "utf8");
 }
 
 const args = process.argv.slice(2);

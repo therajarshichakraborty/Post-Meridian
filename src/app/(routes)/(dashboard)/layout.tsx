@@ -3,18 +3,16 @@ import { AppSideBar } from "@/app/(routes)/(dashboard)/_common/app-sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default function DashboardLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <TooltipProvider>
-            <SidebarProvider>
-                <AppSideBar />
-                <SidebarInset>
-                    {children}
-                </SidebarInset>
-            </SidebarProvider>
-        </TooltipProvider>
-    );
+  return (
+    <TooltipProvider>
+      <SidebarProvider>
+        <AppSideBar />
+        <SidebarInset>{children}</SidebarInset>
+      </SidebarProvider>
+    </TooltipProvider>
+  );
 }

@@ -41,6 +41,7 @@ import Logo from "@/components/logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const mainNavItems = [
   { title: "Home", url: "/", icon: Home },
@@ -66,9 +67,7 @@ export function AppSideBar() {
         </div>
         <SidebarTrigger className="shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sidebar-foreground" />
       </SidebarHeader>
-
       <SidebarSeparator />
-
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.2em] text-sidebar-foreground/35 px-2 select-none">
@@ -91,7 +90,10 @@ export function AppSideBar() {
                           : "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent/30"
                       )}
                     >
-                      <Link href={item.url} className="flex items-center w-full">
+                      <Link
+                        href={item.url}
+                        className="flex items-center w-full"
+                      >
                         {isActive && (
                           <span className="absolute left-[4px] w-[2.5px] h-3 rounded-full bg-sidebar-foreground" />
                         )}
@@ -133,7 +135,10 @@ export function AppSideBar() {
                           : "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent/30"
                       )}
                     >
-                      <Link href={item.url} className="flex items-center w-full">
+                      <Link
+                        href={item.url}
+                        className="flex items-center w-full"
+                      >
                         {isActive && (
                           <span className="absolute left-[4px] w-[2.5px] h-3 rounded-full bg-sidebar-foreground" />
                         )}
@@ -166,33 +171,37 @@ export function AppSideBar() {
                   className="relative transition-all duration-200 hover:bg-sidebar-accent/40 active:bg-sidebar-accent/60"
                 >
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-950 text-sidebar-foreground text-xs font-semibold shadow-[0_1px_2px_rgba(0,0,0,0.03)] dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)]">
-                    J
+                    <Image
+                      src='https://miro.medium.com/1*APbiVEPq_Q1UiYjuUU7UDQ.jpeg'
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="rounded-full"
+                    />
                   </div>
                   <div className="flex flex-col items-start leading-tight group-data-[collapsible=icon]:hidden">
                     <span className="text-[13px] font-semibold tracking-tight text-sidebar-foreground">
-                      John Doe
+                      Rajarshi Chakraborty
                     </span>
                     <span className="text-[11px] text-muted-foreground/80 tracking-normal truncate">
-                      john@example.com
+                      rajarshichakraborty2005@gmail.com
                     </span>
                   </div>
                   <ChevronsUpDown className="ml-auto size-3.5 text-sidebar-foreground/45 group-data-[collapsible=icon]:hidden" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent
-                side="top"
-                align="start"
-                className="w-56"
-              >
+              <DropdownMenuContent side="top" align="start" className="w-56">
                 <DropdownMenuItem>
                   <User className="mr-5 h-4 w-4" />
                   Profile
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Settings className="mr-5 h-4 w-4" />
-                  Settings
-                </DropdownMenuItem>
+                <Link href="/settings">
+                  <DropdownMenuItem>
+                    <Settings className="mr-5 h-4 w-4" />
+                    Settings
+                  </DropdownMenuItem>
+                </Link>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="text-destructive focus:text-destructive">
                   <LogOut className="mr-5 h-4 w-4" />
