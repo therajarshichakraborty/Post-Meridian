@@ -43,7 +43,8 @@ export default function RootLayout({
               attribute="class"
               defaultTheme="dark"
               enableSystem={false}
-              disableTransitionOnChange>
+              disableTransitionOnChange
+            >
               <div className="fixed top-6 right-6 z-50">
                 <AnimatedThemeToggler className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200" />
               </div>

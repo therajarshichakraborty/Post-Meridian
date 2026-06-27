@@ -34,7 +34,7 @@ function ChannelTabContent() {
   });
   const channels = (channelsData?.channels || []) as ChannelType[];
   {
-    console.log(channelsData)
+    console.log(channelsData);
   }
 
   useEffect(() => {
@@ -153,7 +153,8 @@ function ChannelTabContent() {
                               "bg-transparent p-0 rounded-full -bottom-1 -right-0.5":
                                 channel.connected,
                             }
-                          )}>
+                          )}
+                        >
                           {channel.connected ? (
                             <div className="size-2.5 bg-primary rounded-full" />
                           ) : (
@@ -205,7 +206,8 @@ const ChannelsTab = () => {
     <Suspense
       fallback={
         <div className="text-sm text-muted-foreground">Loading channels...</div>
-      }>
+      }
+    >
       <ChannelTabContent />
     </Suspense>
   );
