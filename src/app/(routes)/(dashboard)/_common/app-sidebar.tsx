@@ -172,7 +172,7 @@ export function AppSideBar() {
                 >
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-950 text-sidebar-foreground text-xs font-semibold shadow-[0_1px_2px_rgba(0,0,0,0.03)] dark:shadow-[0_1px_3px_rgba(0,0,0,0.3)]">
                     <Image
-                      src='https://miro.medium.com/1*APbiVEPq_Q1UiYjuUU7UDQ.jpeg'
+                      src="https://miro.medium.com/1*APbiVEPq_Q1UiYjuUU7UDQ.jpeg"
                       alt=""
                       width={20}
                       height={20}

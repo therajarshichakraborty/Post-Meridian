@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggler";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
+        <ClerkProvider>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -46,6 +48,7 @@ export default function RootLayout({
           </div>
           {children}
         </ThemeProvider>
+        </ClerkProvider>
       </body>
     </html>
   );
