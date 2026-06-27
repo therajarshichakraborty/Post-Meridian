@@ -234,7 +234,7 @@ import Logo from '@/components/logo';
 import { Button } from '@/components/ui/button';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Skeleton } from '@/components/ui/skeleton';
-//import { getChannelIcon, getChannelUrl } from '@/constants/channels';
+import { getChannelIcon, getChannelUrl } from '@/constants/channels';
 import { ChannelType } from '@/types/channel-type';
 import { PlusSignIcon } from '@hugeicons/core-free-icons';
 import { UserButton, useUser } from '@clerk/nextjs';
