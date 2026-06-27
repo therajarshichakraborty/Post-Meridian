@@ -221,7 +221,6 @@
 
 
 
-
 "use client"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -238,10 +237,10 @@ import { getChannelIcon, getChannelUrl } from '@/constants/channels';
 import { ChannelType } from '@/types/channel-type';
 import { PlusSignIcon } from '@hugeicons/core-free-icons';
 import { UserButton, useUser } from '@clerk/nextjs';
-// import ChannelAvatar from '@/components/channel-avatar';
+import ChannelAvatar from '@/components/channel-avater';
 import { toast } from 'sonner';
 import { useState } from 'react';
-//import CreatePostDialog from '@/components/schedule/create-post-dialog';
+import CreatePostDialog from '@/components/schedule/create-post-dialog';
 
 const mainNav = [
   { name: "Ideas", href: "/ideas", icon: Lightbulb },
@@ -356,29 +355,28 @@ const AppSidebar = () => {
                 </div>
               ) : (
                 connectedChannels?.map((channel: ChannelType) => {
-                  //const url = getChannelUrl(channel.type)
+                  const url = getChannelUrl(channel.type)
                   return (
                     <SidebarMenuItem key={channel.id}>
                       <SidebarMenuButton asChild>
                        <a
-                        
+                         href={`${url}/${channel.handle}`}
                          target="_blank" rel="noreferrer"
                           className="w-full! relative block items-center gap-2"
                        >
-                           {/* <ChannelAvatar
+                           <ChannelAvatar
                             size="sm"
                            className="w-full flex items-center gap-2"
                             type={channel.type}
                             color={channel.color}
                             profileImage={channel.profile_image}
                             name={!isCollapsed ? (channel.handle || channel.name) : ""}
-                           /> */}
+                           />
                        </a>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   )
-                }
-              )
+                })
               )}
             </SidebarMenu>
           </SidebarGroupContent>
@@ -400,8 +398,8 @@ const AppSidebar = () => {
                 </div>
               ) : (
                 <>
-                {/* {limitedChannels.map((channel: ChannelType) => {
-                 // const icon = getChannelIcon(channel.type)
+                {limitedChannels.map((channel: ChannelType) => {
+                  const icon = getChannelIcon(channel.type)
                   return (
                     <SidebarMenuItem key={channel.id}>
                       <SidebarMenuButton asChild
@@ -433,7 +431,7 @@ const AppSidebar = () => {
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   )
-                })} */}
+                })}
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
                     <Button asChild variant="ghost" className='w-full justify-start mt-1'>
@@ -469,10 +467,10 @@ const AppSidebar = () => {
         </div>
       </SidebarFooter>
     </Sidebar>
-     {/* <CreatePostDialog
+     <CreatePostDialog
         open={isCreatePostOpen}
         onOpenChange={setIsCreatePostOpen}
-      /> */}
+      />
     </>
   )
 }
