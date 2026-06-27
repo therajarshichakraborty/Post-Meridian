@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggler";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { ClerkProvider } from "@clerk/nextjs";
+import { QueryProvider } from "@/components/query-provider";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -33,21 +34,22 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased cursor-pointer`}
-      suppressHydrationWarning
-    >
+      suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
         <ClerkProvider>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          <div className="fixed top-6 right-6 z-50">
-            <AnimatedThemeToggler className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200" />
-          </div>
-          {children}
-        </ThemeProvider>
+          <QueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+            <div className="fixed top-6 right-6 z-50">
+              <AnimatedThemeToggler className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-all duration-200" />
+            </div>
+            {children}
+          </ThemeProvider>
+          </QueryProvider>
         </ClerkProvider>
       </body>
     </html>
