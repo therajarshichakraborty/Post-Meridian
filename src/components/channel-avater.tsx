@@ -1,22 +1,18 @@
-"use client"
+"use client";
 
-import { HugeiconsIcon } from "@hugeicons/react"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
-import { cn } from "@/lib/utils"
-import { ChannelTypeEnum, getChannelIcon } from "@/constants/channels"
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
+import { ChannelTypeEnum, getChannelIcon } from "@/constants/channels";
 
 type ChannelAvatarProps = {
-  type: ChannelTypeEnum
-  color: string
-  profileImage?: string | null
-  name?: string | null
-  size?: "sm" | "md"
-  className?: string
-}
+  type: ChannelTypeEnum;
+  color: string;
+  profileImage?: string | null;
+  name?: string | null;
+  size?: "sm" | "md";
+  className?: string;
+};
 
 const ChannelAvatar = ({
   type,
@@ -26,14 +22,16 @@ const ChannelAvatar = ({
   size = "md",
   className = "inline-flex items-center gap-2",
 }: ChannelAvatarProps) => {
-  const icon = getChannelIcon(type)
+  const icon = getChannelIcon(type);
 
   return (
     <div className={cn(className)}>
-      <Avatar
-        className={cn(size === "sm" ? "size-8" : "size-10", "border")}>
+      <Avatar className={cn(size === "sm" ? "size-8" : "size-10", "border")}>
         <AvatarFallback>LM</AvatarFallback>
-        <AvatarImage src={profileImage || "./images/avatar.webp"} className="rounded-xl!" />
+        <AvatarImage
+          src={profileImage || "./images/avatar.webp"}
+          className="rounded-xl!"
+        />
         {icon ? (
           <div
             className={cn(
@@ -46,15 +44,9 @@ const ChannelAvatar = ({
               className="flex size-full items-center justify-center rounded-sm p-[4px]!"
               style={{ backgroundColor: color }}
             >
-              <HugeiconsIcon
-                icon={icon}
-                className={cn(
-                  "text-white! size-2.5!",
-                )}
-              />
+              <HugeiconsIcon icon={icon} color="white" size={10} />
             </span>
           </div>
-
         ) : null}
       </Avatar>
 
@@ -62,7 +54,7 @@ const ChannelAvatar = ({
         <span className="truncate font-medium text-[14.0px]">{name}</span>
       ) : null}
     </div>
-  )
-}
+  );
+};
 
-export default ChannelAvatar
+export default ChannelAvatar;

@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
     const totalChannels = typesRes.data?.length || 0;
     // @ts-ignore
     const connectedCount = channels.filter(
-        // @ts-ignore
+      // @ts-ignore
       (channel) => channel.connected
     ).length;
 
