@@ -1,5 +1,5 @@
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { AppSideBar } from "@/app/(routes)/(dashboard)/_common/app-sidebar";
+import AppSideBar from "@/app/(routes)/(dashboard)/_common/app-sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default function DashboardLayout({
